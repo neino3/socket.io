@@ -307,11 +307,17 @@ io.sockets.on('connection', function (socket) {
       <!-- home -->
       <div class="page page-active" id="page-home">
         <div class="section">
+          <!--
           <div class="title">What is Socket.IO?</div>
           <p><strong>Socket.IO</strong> aims to make realtime apps possible in every
           browser and mobile device, blurring the differences between the different
           transport mechanisms. It's care-free realtime 100% in JavaScript.</p>
 
+          -->
+          <div class="title">Socket.IO とは?</div>
+          <p><strong>Socket.IO</strong> は複数の通信メカニズムを抽象化することで、
+            全てのブラウザ、デバイスでリアルタイムアプリを実装可能にするために開発されました。
+            とても手軽にリアルタイムなアプリを 100% JavaScript で作成可能です。</p>
           <div class="example">
             <div class="example-left">
               <p class="title">Server</p>
@@ -345,13 +351,20 @@ io.sockets.on('connection', function (socket) {
         <div class="section">
           <div class="title">How to use</div>
 
+          <!--
           <div class="subtitle">Installing</div>
+          -->
+          <div class="subtitle">インストール</div>
           <pre class="prettyprint">npm install socket.io</pre>
           <br>
 
           <!-- example -->
+          <!--
           <div class="subtitle">Using with Node HTTP server</div>
           <p>For this example, simply run `npm install socket.io`</p>
+          -->
+          <div class="subtitle">Node の HTTP サーバと合わせて使う場合</div>
+          <p>この例では、`npm install socket.io` を実行してください。</p>
           <div class="example">
             <div class="example-left">
               <p class="title">Server (app.js)</p>
@@ -395,9 +408,14 @@ io.sockets.on('connection', function (socket) {
           </div>
 
           <!-- example -->
+          <!--
           <div class="subtitle">Using with the Express web framework</div>
           <p>You can serve normal pages and AJAX requests with Express, and attach your socket.io server</p>
           <p>For this example, simply run `npm install socket.io express`</p>
+          -->
+          <div class="subtitle">Express と合わせて使う場合</div>
+          <p>通常のページ配信や、Ajax リクエストは Express で行い、そこに Socket.IO のサーバを加えます。</p>
+          <p>この例では `npm install socket.io express` を実行してください。</p>
           <div class="example">
             <div class="example-left">
               <p class="title">Server (app.js)</p>
@@ -431,8 +449,12 @@ io.sockets.on('connection', function (socket) {
           </div>
 
           <!-- example -->
+          <!--
           <div class="subtitle">Sending and receiving events.</div>
           <p>Socket.IO allows you to emit and receive custom events. Besides `connect`, `message` and `disconnect`, you can emit custom events:</p>
+          -->
+          <div class="subtitle">メッセージの送受信</div>
+          <p>Socket.IO はカスタムイベントの発火/検出ができます。`connect`, `message`, `disconnect` だけでなく、好きなイベント名が使えるということです。</p>
           <div class="example">
             <div class="example-left example-left-long">
               <p class="title">Server</p>
@@ -454,8 +476,12 @@ io.sockets.on('connection', function (socket) {
           </div>
 
           <!-- example -->
+          <!--
           <div class="subtitle">Storing data associated to a client</div>
           <p>Sometimes it's necessary to store data associated with a client that's necessary for the duration of the session.</p>
+          -->
+          <div class="subtitle">クライアントにもとづいたデータの保存</div>
+          <p>セッションの維持などのために、クライアントに紐づいたデータを保存することができます。</p>
           <div class="example">
             <div class="example-left">
               <p class="title">Server</p>
@@ -489,9 +515,15 @@ io.sockets.on('connection', function (socket) {
           </div>
 
           <!-- example -->
+          <!--
           <div class="subtitle">Restricting yourself to a namespace.</div>
           <p>If you have control over all the messages and events emitted for a particular application, using the default / namespace works. If you want to leverage 3rd-party code, or produce code to share with others, socket.io provides a way of namespacing a socket.</p>
           <p>This has the benefit of `multiplexing` a single connection. Instead of socket.io using two `WebSocket` connections, it'll use one.</p>
+          -->
+          <div class="subtitle">ネームスペースの制限</div>
+          <p>全てのメッセージ/イベントをアプリケーションで処理する場合、デフォルトで / のネームスペースが使用されます。もし、サードパーティのコードを取り入れたり、他のコードと共有したい場合は、 Socket.IO はソケットに対するネームスペースを提供します。</p>
+          <p>これは単一コネクション上での `multiplexing(多重通信)` の恩恵であり、二つの `WebSocket` 通信ではなく一つだけを使って行っています。
+</p>
           <div class="example">
             <div class="example-left">
               <p class="title">Server</p>
@@ -534,10 +566,16 @@ var news = io
           </div>
 
           <!-- example -->
+          <!--
           <div class="subtitle">Sending volatile messages.</div>
           <p>Sometimes certain messages can be dropped. Let's say you have an app that shows realtime tweets for the keyword `bieber`.</p>
           <p>If a certain client is not ready to receive messages (because of network slowness or other issues, or because he's connected through long polling and is in the middle of a request-response cycle), if he doesn't receive ALL the tweets related to bieber your application won't suffer.</p>
           <p>In that case, you might want to send those messages as volatile messages.</p>
+          -->
+          <div class="subtitle">揮発性メッセージの送信</div>
+          <p>ときには、メッセージが欠落することがわかりきっている場合があります。例えば `bieber` というキーワードのツイートをリアルタイムに表示するアプリが有ったとしましょう。</p>
+          <p>もし特定のクライアントが(ネットワークの遅延や他の理由、もしくはロングポーリングのリクエスト-レスポンスサイクルの途中だった場合など)メッセージを受信できる状態でなかったとき、別に全部の `bieber` ツイートを受信できてなかったとしても、あまり気になりません。</p>
+          <p>その場合、メッセージを揮発性メッセージとして送ることができます</p>
           <div class="example">
             <div class="example-left-long">
               <p class="title">Server</p>
@@ -558,9 +596,14 @@ io.sockets.on('connection', function (socket) {
           </div>
 
           <!-- example -->
+          <!--
           <div class="subtitle">Sending and getting data (acknowledgements).</div>
           <p>Sometimes, you might want to get a callback when the client confirmed the message reception.</p>
           <p>To do this, simply pass a function as the last parameter of `.send` or `.emit`. What's more, when you use `.emit`, the acknowledgement is done by you, which means you can also pass data along:</p>
+          -->
+          <div class="subtitle">送達確認</div>
+          <p>クライアントにメッセージが届いたかどうか、コールバックで知りたい場合があるでしょう。</p>
+          <p>その場合、単純に `.send` や `.emit` の最後の引数にコールバック関数を渡すだけで済みます。そして、 `.emit` 時には、そのコールバックにデータを渡すことで実行することができます。</p>
           <div class="example">
             <div class="example-left">
               <p class="title">Server</p>
@@ -586,8 +629,12 @@ io.sockets.on('connection', function (socket) {
           </div>
 
           <!-- example -->
+          <!--
           <div class="subtitle">Broadcasting messages.</div>
           <p>To broadcast, simply add a `broadcast` flag to `emit` and `send` method calls. Broadcasting means sending a message to everyone else except for the socket that starts it.</p>
+          -->
+          <div class="subtitle">メッセージのブロードキャスト</div>
+          <p>ブロードキャストは `broadcast` フラグを `emit` や `send` の前に付けるだけです。ブロードキャストとはメッセージを「それを送ってきた人」以外全員に送る事です。</p>
           <div class="example">
             <div class="example-left">
               <p class="title">Server</p>
@@ -601,8 +648,12 @@ io.sockets.on('connection', function (socket) {
           </div>
 
           <!-- example -->
+          <!--
           <div class="subtitle">Using it just as a cross-browser WebSocket.</div>
           <p>If you just want the WebSocket semantics, you can do that too. Simply leverage `send` and listen on the `message` event:</p>
+          -->
+          <div class="subtitle">クロスブラウザ WebSocket としての利用</div>
+          <p>もし本来の WebSocket の構文と同じように使いたかったら、 `send` を使用してメッセージを送り `message` イベントを検出すれば良いだけです。</p>
           <div class="example">
             <div class="example-left">
               <p class="title">Server</p>
@@ -632,15 +683,23 @@ io.sockets.on('connection', function (socket) {
 
       <!-- browser support -->
       <div class="page" id="page-browser-support">
+        <!--
         <div class="section"><div class="title" id="transports">Supported transports</div><p>In order to provide realtime connectivity on every browser, Socket.IO selects the most capable transport at runtime, without it affecting the API. </p><ul><li>WebSocket</li><li>Adobe® Flash® Socket</li><li>AJAX long polling</li><li>AJAX multipart streaming</li><li>Forever Iframe</li><li>JSONP Polling</li></ul></div>
+        -->
+        <div class="section"><div class="title" id="transports">通信方法のサポート</div><p>全てのブラウザでリアルタイムな通信を実現するために、 Socket.IO は同じ API のまま最も適した通信方法を選択します。</p><ul><li>WebSocket</li><li>Adobe® Flash® Socket</li><li>AJAX long polling</li><li>AJAX multipart streaming</li><li>Forever Iframe</li><li>JSONP Polling</li></ul></div>
         <div class="section"><div class="title">Supported browsers</div><div class="subtitle">Desktop</div><ul><li>Internet Explorer 5.5+</li><li>Safari 3+</li><li>Google Chrome 4+</li><li>Firefox 3+</li><li>Opera 10.61+</li></ul><div class="subtitle">Mobile</div><ul><li>iPhone Safari</li><li>iPad Safari</li><li>iPad Safari</li><li>Android WebKit</li><li>WebOs WebKit</li></ul></div>
       </div>
 
       <!-- faq -->
       <div class="page" id="page-faq">
+        <!--
         <div class="section"><div class="title">FAQ</div><div class="subtitle">Does Socket.IO support cross-domain connections?</div><p>Absolutely, on every browser!</p><div class="subtitle">Why Flash?</div><p>Flash is absolutely <b>not required</b>for Socket.IO to function. If Flash is available, it'll be leveraged, as it provides almost the same capabilities as WebSocket.  If it's not, the best next transport will be chosen. </p><div class="subtitle">I want to host the Socket.IO client myself</div><p>If you're not relying on Node.JS serving Socket.IO clientside JavaScript files, make sure you set the `WEB_SOCKET_SWF_LOCATION` right after including socket.io.js with the location of the WebSocketMain.swf</p><p>This is required in order for Socket.IO to find the .swf file required for Flash WebSocket.</p><div class="subtitle">Why not just call it `WebSocket` if the actual WebSocket is not present and mimick its API?</div><p>Socket.IO does more than WebSocket, even if WebSocket is selected as the transport and the user is browsing your website with an ultra modern browser. Certain features like heartbeats, timeouts and disconnection support are vital to realtime applications but are not provided by the WebSocket API out of the box. </p><p>This is akin to jQuery's decision of creating a feature-rich and simple $.ajax API as opposed to normalizing XMLHttpRequest.</p></div>
       </div>
+      -->
 
+        <div class="section"><div class="title">FAQ</div><div class="subtitle">Socket.IO はクロスドメイン通信はサポートしてますか？</div><p>
+全てのブラウザで、完璧にサポートしてます！</p><div class="subtitle">なぜフラッシュなの?</div><p>Flash は実際は Socket.IO の機能に全く <b>必要ない</b>です。しかし、もし Flash が有効なら、 それを使えば WebSocket とほぼ同等の性能を発揮します。もし無ければ、次の通信方法が選択されるだけです。</p><div class="subtitle">Socket.IO のクライアントライブラリを自分でホストしたいのですが。</div><p>もし、 Node.js で Socket.IO のクライアントライブラリの JS ファイルを配らないなら、 socket.io.js をインクルードした後に `WEB_SOCKET_SWF_LOCATION` に WebSocketMain.swf のパスをを設定してください。</p><p>これは Socket.IO が Flash WebSocket の実行時に .swf ファイルの場所を知るために必要です。</p><div class="subtitle">Why not just call it `WebSocket` if the actual WebSocket is not present and mimick its API?</div><p>Socket.IO は WebSocket 以上を目指しています。WebSocket が通信方法に選択され、ユーザが超モダンなブラウザでそのサイトを見ていたとしてもです。例えば、ハートビート、タイムアウトや切断のサポートはリアルタイムアプリを作る上では非常に重要ですが、 WebSocket の API では、そのままでは提供されていません。</p><p>これは、 jQuery が $.ajax という対機能かつシンプルなAPIで通常の XMLHttpRequest を抽象化しているのと同じ考え方です。</p></div>
+      </div>
     </div>
     <div id="footer"><p>Socket.IO by  <a href="http://devthought.com">Guillermo Rauch</a> at <a href="http://learnboost.com">gradebook</a> <a href="http://github.com/learnboost/">LearnBoost Labs</a>. Released under the MIT license -  Copyright <a href="http://learnboost.com">LearnBoost 2011</a></p></div>
   </div>
