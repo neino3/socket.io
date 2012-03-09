@@ -9,6 +9,25 @@
 		<!--[if lt IE 9]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
+		<style>
+			ul {
+				margin-bottom: 0 !important;
+				border-width: 0 !important;
+			}
+				ul li {
+					border-width: 0 !important;
+					list-style: square inside !important;
+					font-size: 15px !important;
+				}
+					ul ul li {
+						margin-left: 20px !important;
+						list-style: disc inside !important;
+						color: #ccc !important;
+					}
+			#gsoc {
+				font-size: 18px;
+			}
+		</style>
 	</head>
 	<body>
 
@@ -31,8 +50,31 @@
 			</section>
 
 			<section>
-				<p>Thanks for participating in the Socket.IO 2011 users poll!</p>
-				<iframe src="https://docs.google.com/spreadsheet/embeddedform?formkey=dHEtc1ZnSWlSR3VfeDNDVFJ2NjJvcGc6MQ" width="607" height="1252">Loading...</iframe>
+				<p id="gsoc"><b>GSOC 2012 ideas</b></p>
+				<ul>
+					<li>Stress testing of Node.JS server</li>
+					<li>Benchmarks for Node.JS server to prevent regressions</li>
+					<li>Performance improvements</li>
+					<li>Automating browser cloud testing of browser client</li>
+					<li>Documentation and examples on key areas:
+						<ul>
+							<li>Load balancing and scalability</li>
+							<li>Socket limit per host bypass</li>
+							<li>Databases and sessions</li>
+						</ul>
+					</li>
+					<li>Website and documentation translation to multiple languages</li>
+					<li>Ensuring clients are ready and up-to-date for Socket.IO 1.0 on:
+						<ul>
+							<li>Python</li>
+							<li>Ruby</li>
+							<li>Java (+Android)</li>
+							<li>Flash</li>
+							<li>ObjC (+iOS)</li>
+						</ul>
+						<p>and other targets that participants might suggest.</p>
+					</li>
+				</ul>
 			</section>
 
 		</div>
