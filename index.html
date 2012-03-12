@@ -193,7 +193,7 @@ io.sockets.on('connection', function (socket) {
 					<p>Socket.IO allows you to emit and receive custom events. Besides `connect`, `message` and `disconnect`, you can emit custom events:</p>
 					-->
 					<h3>メッセージの送受信</h3>
-					<p>Socket.IO はカスタムイベントの発火/検出ができます。`connect`, `message`, `disconnect` だけでなく、好きなイベント名を使うことができます。</p>
+					<p>Socket.IO はカスタムイベントの発行/検出ができます。`connect`, `message`, `disconnect` に加えて、好きなイベント名を使うことができます。</p>
 					<div class="example">
 						<div class="example-left example-left-long">
 							<h4>Server</h4>
@@ -259,8 +259,8 @@ io.sockets.on('connection', function (socket) {
 					<p>If you have control over all the messages and events emitted for a particular application, using the default / namespace works. If you want to leverage 3rd-party code, or produce code to share with others, socket.io provides a way of namespacing a socket.</p>
 					<p>This has the benefit of `multiplexing` a single connection. Instead of socket.io using two `WebSocket` connections, it'll use one.</p>
 					-->
-					<h3>ネームスペースの制限</h3>
-					<p>全てのメッセージ/イベントを個々のアプリケーションで処理する場合、デフォルトで / のネームスペースが使用されます。もし、サードパーティのコードを取り入れたり、他のコードと共有したい場合のために、 Socket.IO はソケットに対するネームスペースを提供します。</p>
+					<h3>ネームスペースによる制限</h3>
+					<p>もし特定のアプリケーションに発行される全てのメッセージやイベントの制御が出来るのであれば、デフォルトの / のネームスペースで問題なく動作します。もし、サードパーティのコードを取り入れたり、他のコードと共有したい場合のために、 Socket.IO はソケットに対するネームスペースを提供します。</p>
 					<p>これは単一コネクション上での `multiplexing(多重通信)` の恩恵であり、二つの `WebSocket` 通信ではなく、一つだけを使って行っています。</p>
 					<div class="example">
 						<div class="example-left">
@@ -311,9 +311,9 @@ var news = io
 					<p>In that case, you might want to send those messages as volatile messages.</p>
 					-->
 					<h3>揮発性メッセージの送信</h3>
-					<p>ときには、メッセージが欠落することがわかりきっている場合があります。例えば `bieber` というキーワードのツイートをリアルタイムに表示するアプリが有ったとしましょう。</p>
+					<p>ときには、メッセージが欠落しても良い場合があります。例えば `bieber` というキーワードのツイートをリアルタイムに表示するアプリが有ったとしましょう。</p>
 					<p>もし特定のクライアントが(ネットワークの遅延や他の理由、もしくはロングポーリングのリクエスト-レスポンスサイクルの途中だった場合など)メッセージを受信できる状態でなかったとき、別に全部の `bieber` ツイートを受信できてなかったとしても、あまり気になりません。</p>
-					<p>その場合、メッセージを揮発性メッセージとして送ることができます</p>
+					<p>その場合、メッセージを揮発性メッセージとして送ることができます。</p>
 					<div class="example">
 						<div class="example-left-long">
 							<h4>Server</h4>
@@ -341,7 +341,7 @@ io.sockets.on('connection', function (socket) {
 					-->
 					<h3>送達確認</h3>
 					<p>クライアントにメッセージが届いたかどうか、コールバックで知りたい場合があるでしょう。</p>
-					<p>その場合、単純に `.send` や `.emit` の最後の引数にコールバック関数を渡すだけで済みます。そして、 `.emit` 時には、そのコールバックにデータを渡すことで実行することができます。</p>
+					<p>その場合、単純に `.send` や `.emit` の最後の引数にコールバック関数を渡すだけで済みます。更に、 `.emit` 時には、そのコールバックにデータを渡すことで実行することができます。</p>
 					<div class="example">
 						<div class="example-left">
 							<h4>Server</h4>
