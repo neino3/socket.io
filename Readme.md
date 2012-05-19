@@ -85,13 +85,15 @@ necessary for the duration of the session.
 var io = require('socket.io').listen(80);
 
 io.sockets.on('connection', function (socket) {
-  socket.on('set nickname', function (name) {
-    socket.set('nickname', name, function () { socket.emit('ready'); });
+  socket.on('set name', function (name) {
+    socket.set('name', name, function () {
+      socket.emit('ready');
+    });
   });
 
-  socket.on('msg', function () {
-    socket.get('nickname', function (err, name) {
-      console.log('Chat message by ', name);
+  socket.on('get name', function () {
+    socket.get('name', function (err, name) {
+      socket.emit('name', name);
     });
   });
 });
@@ -103,11 +105,13 @@ io.sockets.on('connection', function (socket) {
 <script>
   var socket = io.connect('http://localhost');
 
-  socket.on('connect', function () {
-    socket.emit('set nickname', prompt('What is your nickname?'));
-    socket.on('ready', function () {
-      console.log('Connected !');
-      socket.emit('msg', prompt('What is your message?'));
+  socket.on('connect', function() {
+    socket.emit('set name', 'rauchg');
+    socket.on('ready', function (msg) {
+      socket.emit('get name');
+    });
+    socket.on('name', function (name) {
+      console.log('name is', name);
     });
   });
 </script>
